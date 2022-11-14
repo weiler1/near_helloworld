@@ -1,0 +1,17 @@
+hello-near/node_modules
+hello-near/.pnp
+hello-near/.pnp.js
+
+# build
+hello-near/out
+hello-near/dist
+hello-near/contract/target
+
+# keys
+hello-near/templates/react/neardev
+
+# testing
+hello-near/coverage
+
+# production
+hello-near/build
