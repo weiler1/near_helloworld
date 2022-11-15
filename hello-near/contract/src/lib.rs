@@ -33,7 +33,7 @@ impl Contract {
         self.message = message;
     }
 
-    // Public method - accepts a greeting, such as "howdy", and records it
+    // Public method - sets current greeting to its negative
     pub fn angry_greeting(&mut self) {
         log!("Greeting Angrily Now");
         let new_message = format!("{}{}", "Not ".to_string(), self.message.clone());
