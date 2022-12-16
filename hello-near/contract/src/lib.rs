@@ -1,6 +1,7 @@
 // Find all our documentation at https://docs.near.org
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::{log, near_bindgen};
+use rand::Rng;
 
 // Define the default message
 const DEFAULT_MESSAGE: &str = "Hello";
@@ -38,6 +39,20 @@ impl Contract {
         log!("Greeting Angrily Now");
         let new_message = format!("{}{}", "Not ".to_string(), self.message.clone());
         self.message = new_message;
+    }
+
+    pub fn random_greeting(&mut self) {
+        log!("Greeting Randomly Now");
+        let mut rng = rand::thread_rng();
+        let x = rng.gen_range(0..4);
+        self.message = match x{
+            0 => "Hi".to_string(),
+            1 => "Hola".to_string(),
+            2 => "Konnichiwa".to_string(),
+            3 => "Salam".to_string(),
+            4 => "Namaste".to_string(),
+            _ => "Aloha".to_string(),
+        }
     }
 }
 
