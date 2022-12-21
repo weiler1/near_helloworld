@@ -41,6 +41,7 @@ impl Contract {
         self.message = new_message;
     }
 
+    // Public method - sets a random greeting
     pub fn random_greeting(&mut self) {
         log!("Greeting Randomly Now");
         let mut rng = rand::thread_rng();
@@ -53,6 +54,13 @@ impl Contract {
             4 => "Namaste".to_string(),
             _ => "Aloha".to_string(),
         }
+    }
+
+    // Public method - doubles the set greeting
+    pub fn double_greeting(&mut self) {
+        log!("Greeting You Doubly Today!");
+        let old_greeting = self.message.clone();
+        self.message = old_greeting.clone() + &old_greeting;
     }
 }
 
@@ -101,6 +109,16 @@ mod tests {
         assert_eq!(
             contract.get_greeting(),
             "Not Hello".to_string()
+        );
+    }
+
+    #[test]
+    fn get_double_greeting() {
+        let mut contract = Contract::default();
+        contract.double_greeting();
+        assert_eq!(
+            contract.get_greeting(),
+            "HelloHello".to_string()
         );
     }
 }
