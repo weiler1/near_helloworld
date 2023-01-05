@@ -62,6 +62,12 @@ impl Contract {
         let old_greeting = self.message.clone();
         self.message = old_greeting.clone() + &old_greeting;
     }
+
+    // Public method - does a blank greeting
+    pub fn blank_greeting(&mut self) {
+        log!("No Greetings for You Today!");
+        self.message = "".to_string();
+    }
 }
 
 /*
@@ -119,6 +125,16 @@ mod tests {
         assert_eq!(
             contract.get_greeting(),
             "HelloHello".to_string()
+        );
+    }
+
+    #[test]
+    fn get_blank_greeting() {
+        let mut contract = Contract::default();
+        contract.blank_greeting();
+        assert_eq!(
+            contract.get_greeting(),
+            "".to_string()
         );
     }
 }
